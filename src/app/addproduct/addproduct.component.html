@@ -1,0 +1,116 @@
+<div class="col-md-12">
+    <div class="card card-container">
+    
+      <form
+        name="form"
+        (ngSubmit)="onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-group">
+          <label for="name">name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            [(ngModel)]="form.name"
+            required
+            #user="ngModel"
+          />
+        </div>
+        <div class="form-group">
+            <label for="calories">calories</label>
+            <input
+              type="number"
+              class="form-control"
+              name="calories"
+              [(ngModel)]="form.calories"
+              required
+              #calories="ngModel"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="proteins">proteins</label>
+            <input
+              type="number"
+              class="form-control"
+              name="proteins"
+              [(ngModel)]="form.proteins"
+              required
+              #proteins="ngModel"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="carbohydrates">carbohydrates</label>
+            <input
+              type="number"
+              class="form-control"
+              name="carbohydrates"
+              [(ngModel)]="form.carbohydrates"
+              required
+              #carbohydrates="ngModel"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="fat">fat</label>
+            <input
+              type="number"
+              class="form-control"
+              name="fat"
+              [(ngModel)]="form.fat"
+              required
+              #fat="ngModel"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="fat">weight</label>
+            <input
+              type="number"
+              class="form-control"
+              name="weight"
+              [(ngModel)]="form.weight"
+              required
+              #weight="ngModel"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="price">price</label>
+            <input
+              type="number"
+              class="form-control"
+              name="price"
+              [(ngModel)]="form.price"
+              required
+              #price="ngModel"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="shop">shop</label>
+            <input
+              type="text"
+              class="form-control"
+              name="shop"
+              [(ngModel)]="form.shop"
+              required
+              #price="ngModel"
+            />
+          </div>
+        
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">
+            Add
+          </button>
+        </div>
+ 
+      </form> 
+  
+    
+    </div>
+  </div>
