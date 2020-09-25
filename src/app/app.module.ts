@@ -15,6 +15,10 @@ import { AuthInterceptor } from './_helpers/auth.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { ViewproductComponent } from './viewproduct/viewproduct.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 
 @NgModule({
@@ -35,7 +39,10 @@ import { ViewproductComponent } from './viewproduct/viewproduct.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [{
     provide : HTTP_INTERCEPTORS,

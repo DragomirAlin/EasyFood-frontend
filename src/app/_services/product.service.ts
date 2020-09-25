@@ -34,8 +34,10 @@ export class ProductService {
     }, httpOptions);
   }
 
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
+
+
+  viewAll(): Observable<any> {
+    return this.http.get(API_URL + 'viewAll', { responseType: 'text' });
   }
 
   getModeratorBoard(): Observable<any> {

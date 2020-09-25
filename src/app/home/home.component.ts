@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../_services/user.service';
+import { AuthService } from '../_services/auth.service';
+
+import { TokenStorageService } from '../_services/token-storage.service';
+import { Router, CanActivate, ActivatedRoute, RouterStateSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,18 +10,46 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  content: string;
+  form: any = {};
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
 
-  constructor(private userService: UserService) { }
+  constructor(private route: ActivatedRoute,private router: Router, private authService: AuthService, private tokenStorage: TokenStorageService) { }
+
+
+
 
   ngOnInit() {
-    this.userService.getPublicContent().subscribe(
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+    }
+  }
+
+  onSubmit() {
+    this.authService.login(this.form).subscribe(
       data => {
-        this.content = data;
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.tokenStorage.getUser().roles;
+        this.reloadPage();
+      
+      
       },
       err => {
-        this.content = JSON.parse(err.error).message;
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
       }
     );
+  }
+  
+
+  reloadPage() {
+    window.location.reload();
   }
 }
