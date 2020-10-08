@@ -3,6 +3,7 @@ import { ProductService } from '../_services/product.service'
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-addproduct',
@@ -14,19 +15,20 @@ export class AddproductComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'weight', 'calories', 'proteins', 'carbohydrates', 'fat', 'shop', 'price', 'by_added'];
   values: PeriodicElement[];
   dataSource: MatTableDataSource<PeriodicElement>;
+  currentUser: any;
 
   // dataSource = new MatTableDataSource<PeriodicElement>(this.values);
   data;
  
   
-  constructor(private productService : ProductService) { }
+  constructor(private productService : ProductService, private token: TokenStorageService) { }
 
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit(): void {
-
+    this.currentUser = this.token.getUser();
     this.productService.viewAll().subscribe((data) => {
       this.data = data
       console.log(data)

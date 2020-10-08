@@ -1,5 +1,12 @@
-<div class="container">
-    <header class="jumbotron">
-      <p>{{ content }}</p>
-    </header>
-  </div>
+<div class="container" *ngIf="currentUser; else loggedOut">
+    <div class="container">
+        <header class="jumbotron">
+            <p>{{ content }}</p>
+        </header>
+    </div>
+</div>
+
+
+<ng-template #loggedOut>
+    Please login.
+</ng-template>
