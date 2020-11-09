@@ -3,25 +3,25 @@
         <a href="#" class="navbar-brand"> <img src="https://www.flaticon.com/svg/static/icons/svg/1205/1205755.svg" width="30" height="30" class="d-inline-block align-top" alt=""> Easy Food</a>
         <ul class="navbar-nav mr-auto" routerLinkActive="active">
             <li class="nav-item">
-                <a href="/home" class="nav-link" routerLink="home">Home </a>
+                <a href="/home" class="nav-link custom" routerLink="home">Home </a>
             </li>
             <li class="nav-item" *ngIf="showAdminBoard">
-                <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
+                <a href="/admin" class="nav-link custom" routerLink="admin">Admin Board</a>
             </li>
             <li class="nav-item" *ngIf="showModeratorBoard">
-                <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
+                <a href="/mod" class="nav-link custom" routerLink="mod">Moderator Board</a>
             </li>
             <li class="nav-item">
-                <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">Menu</a>
+                <a href="/menu" class="nav-link custom" *ngIf="isLoggedIn" routerLink="menu">Menu</a>
             </li>
             <li class="nav-item">
-                <a href="/product" class="nav-link" *ngIf="isLoggedIn" routerLink="product">Product</a>
+                <a href="/product" class="nav-link custom" *ngIf="isLoggedIn" routerLink="product">Product</a>
             </li>
         </ul>
 
         <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
             <li class="nav-item">
-                <a href="/register" class="nav-link" routerLink="register">Contact</a>
+                <a href="/register" class="nav-link custom" routerLink="register">Contact</a>
             </li>
         </ul>
 
@@ -36,10 +36,10 @@
 
         <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
             <li class="nav-item">
-                <a href="/profile" class="nav-link" routerLink="profile">Profile</a>
+                <a href="/profile" class="nav-link custom" routerLink="profile">Profile</a>
             </li>
             <li class="nav-item">
-                <a href class="nav-link" (click)="logout()">Log Out</a>
+                <a href class="nav-link custom" (click)="logout()">Log Out</a>
             </li>
         </ul>
 

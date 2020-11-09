@@ -1,8 +1,20 @@
 <div class="container" *ngIf="currentUser; else loggedOut">
     <header class="jumbotron">
-        <h3>
-            <img src="/assets/user1.png"> <strong>  {{ currentUser.username }}</strong> Profile
-        </h3>
+        <div class="avatar" *ngIf=retrievedImage>
+
+            <img [src]="retrievedImage">
+
+        </div>
+        <input type="button" (click)="getImage()" value="Show Image">
+        <h3><strong>  {{ currentUser.username }}</strong> Profile </h3>
+
+
+        <div class="col-md-6">
+            <input type="file" (change)="onFileChanged($event)">
+        </div>
+        <div class="col-md-6">
+            <input type="button" (click)="onUpload()" value="upload">
+        </div>
     </header>
     <p>
         <strong>Token:</strong> {{ currentUser.accessToken.substring(0, 20) }} ... {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
@@ -18,42 +30,14 @@
     </ul>
 </div>
 
-<div class="container row">
-    <div class="col-md-12">
-        <h1>Upload Image</h1>
-    </div>
-</div>
-<div class="container row">
-    <div class="col-md-6">
-        <input type="file" (change)="onFileChanged($event)">
-    </div>
-    <div class="col-md-6">
-        <input type="button" (click)="onUpload()" value="upload">
-    </div>
-</div>
+
 <hr />
 <div class="container row">
     <div class="col-md-12">
         <div *ngIf=message>{{message}}</div>
     </div>
 </div>
-<div class="container row">
-    <div class="col-md-6">
-        <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName" name="name" />
-    </div>
-    <div class="col-md-6">
 
-        <input type="button" (click)="getImage()" value="Get Image">
-    </div>
-</div>
-<div class="container row">
-    <div class="col-md-12">
 
-        <img [src]="getImage()">
-
-    </div>
-</div>
-
-<ng-template #loggedOut>
-    Please login.
+<ng-template #loggedOut> Please login.
 </ng-template>

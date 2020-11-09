@@ -18,6 +18,7 @@ import { ViewproductComponent } from './viewproduct/viewproduct.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PasswordForgotComponent } from './password-forgot/password-forgot.component';
 
 
 
@@ -32,7 +33,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BoardModeratorComponent,
     ProfileComponent,
     AddproductComponent,
-    ViewproductComponent
+    ViewproductComponent,
+    PasswordForgotComponent
   ],
   imports: [
     BrowserModule,

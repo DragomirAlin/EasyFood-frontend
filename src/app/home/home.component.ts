@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  currentUser : any;
 
   constructor(private route: ActivatedRoute,private router: Router, private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
@@ -24,7 +25,9 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
+      this.currentUser = this.tokenStorage.getUser();
       this.roles = this.tokenStorage.getUser().roles;
+      
     }
   }
 
